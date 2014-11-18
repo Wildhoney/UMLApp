@@ -38,7 +38,12 @@
              */
             controller: function controller($scope) {
 
-                $scope.styleItem = function styleItem(classItem) {
+                /**
+                 * @method styleClass
+                 * @param classItem {Object}
+                 * @return {void}
+                 */
+                $scope.styleClass = function styleClass(classItem) {
 
                     classItem.attr({
                         fill: 'white',
@@ -48,7 +53,21 @@
                         cursor: 'move'
                     });
 
-                }
+                };
+
+                /**
+                 * @method styleText
+                 * @param textItem {Object}
+                 * @return {void}
+                 */
+                $scope.styleText = function styleText(textItem) {
+
+                    textItem.attr({
+                        fontFamily: 'Arial, Tahoma, Helvetica',
+                        fontSize: '11px'
+                    });
+
+                };
 
             },
 
@@ -62,10 +81,14 @@
              */
             link: function link(scope, element, attributes, umlController) {
 
+                var group = umlController.snap.group();
+
                 // Create the class item, and then style it!
-                var classItem = umlController.snap.rect(scope.model.x, scope.model.y, 200, 100);
-                scope.styleItem(classItem);
-                classItem.drag();
+                var classItem = group.rect(scope.model.x, scope.model.y, 200, 100);
+                var textItem  = group.text(scope.model.x + 8, scope.model.y + 18, scope.model.name);
+                scope.styleClass(classItem);
+                scope.styleText(textItem);
+                group.drag();
 
             }
 

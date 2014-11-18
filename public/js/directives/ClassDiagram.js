@@ -21,7 +21,7 @@
              * @type {Boolean}
              * @default true
              */
-            //scope: true,
+            scope: true,
 
             /**
              * @method controller
@@ -35,8 +35,8 @@
                  * @type {Number[]}
                  */
                 $scope.classes = [
-                    { x: 100, y: 50 },
-                    { x: 210, y: 320 }
+                    { name: 'CatController', x: 100, y: 50 },
+                    { name: 'PetsController', x: 210, y: 320 }
                 ];
 
             }
