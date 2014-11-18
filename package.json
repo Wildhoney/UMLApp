@@ -1,0 +1,30 @@
+{
+  "name": "umlapp",
+  "version": "0.1.0",
+  "description": "UML schema creation using SnapSVG w/ Angular export and GitHub synchronisation",
+  "main": "dist/umlapp.min.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Wildhoney/UMLApp.git"
+  },
+  "keywords": [
+    "svg",
+    "uml",
+    "angular",
+    "ng",
+    "github",
+    "synchronisation"
+  ],
+  "author": "Adam Timberlake <adam.timberlake@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Wildhoney/UMLApp/issues"
+  },
+  "homepage": "https://github.com/Wildhoney/UMLApp",
+  "dependencies": {
+    "express": "^4.10.2"
+  }
+}
