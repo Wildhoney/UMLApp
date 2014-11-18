@@ -41,16 +41,18 @@
                 /**
                  * @method styleClass
                  * @param classItem {Object}
+                 * @param shadowFilter {Object}
                  * @return {void}
                  */
-                $scope.styleClass = function styleClass(classItem) {
+                $scope.styleClass = function styleClass(classItem, shadowFilter) {
 
                     classItem.attr({
                         fill: 'white',
                         stroke: 'lightgrey',
                         strokeOpacity: 1,
                         strokeWidth: 1,
-                        cursor: 'move'
+                        cursor: 'move',
+                        filter: shadowFilter
                     });
 
                 };
@@ -64,7 +66,7 @@
 
                     textItem.attr({
                         fontFamily: 'Arial, Tahoma, Helvetica',
-                        fontSize: '11px'
+                        fontSize: '11px',
                     });
 
                 };
@@ -84,9 +86,11 @@
                 var group = umlController.snap.group();
 
                 // Create the class item, and then style it!
-                var classItem = group.rect(scope.model.x, scope.model.y, 200, 100);
-                var textItem  = group.text(scope.model.x + 8, scope.model.y + 18, scope.model.name);
-                scope.styleClass(classItem);
+                var classItem    = group.rect(scope.model.x, scope.model.y, 200, 100),
+                    textItem     = group.text(scope.model.x + 8, scope.model.y + 18, scope.model.name),
+                    shadowFilter = umlController.snap.paper.filter(Snap.filter.shadow(0, 0, 1, .1));
+
+                scope.styleClass(classItem, shadowFilter);
                 scope.styleText(textItem);
                 group.drag();
 
