@@ -5,7 +5,7 @@
      * @submodule classDiagram
      * @author Adam Timberlake
      */
-    $angular.module('umlApp').directive('classDiagram', function classDiagramDirective(Snap) {
+    $angular.module('umlApp').directive('classDiagram', function classDiagramDirective() {
 
         return {
 

@@ -5,7 +5,7 @@
      * @submodule line
      * @author Adam Timberlake
      */
-    $angular.module('umlApp').directive('line', function lineDirective(Snap, eve) {
+    $angular.module('umlApp').directive('line', function lineDirective() {
 
         return {
 
@@ -40,11 +40,8 @@
              */
             link: function link(scope, element, attributes, umlController) {
 
-                /**
-                 * @property lineModel
-                 * @type {Object|null}
-                 */
-                scope.lineModel = null;
+                // Create the line for the line connector.
+                scope.group = umlController.snap.group();
 
                 /**
                  * @method drawLine
@@ -55,23 +52,15 @@
                     var firstModel  = scope.model.connector[0],
                         secondModel = scope.model.connector[1];
 
-                    return umlController.snap.line(firstModel.x, firstModel.y, secondModel.x, secondModel.y)
-                        .attr({stroke: 'lightgrey', zIndex: 0});
+                    return scope.group.line(firstModel.x, firstModel.y, secondModel.x, secondModel.y)
+                                             .attr({ stroke: 'lightgrey' });
 
                 };
 
                 // Observe the passed in connector model.
                 scope.$watch('model', function modelUpdated() {
-
-                    if (scope.lineModel) {
-
-                        // Remove any existing line models from the DOM.
-                        scope.lineModel.remove();
-
-                    }
-
-                    scope.lineModel = scope.drawLine();
-
+                    scope.group.clear();
+                    scope.drawLine();
                 }, true);
 
             }
