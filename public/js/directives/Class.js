@@ -96,6 +96,14 @@
                 // Listen to the move event and update the paths!
                 eve.on('snap.drag.move.' + group.id, function (relX, relY, absX, absY) {
 
+                    scope.$apply(function apply() {
+
+                        // Update the model with the group's new BBox position.
+                        scope.model.x = group.getBBox().x;
+                        scope.model.y = group.getBBox().y;
+
+                    });
+
                 });
 
             }

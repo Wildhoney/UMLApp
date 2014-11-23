@@ -40,11 +40,39 @@
              */
             link: function link(scope, element, attributes, umlController) {
 
-                var firstModel  = scope.model.connector[0],
-                    secondModel = scope.model.connector[1];
+                /**
+                 * @property lineModel
+                 * @type {Object|null}
+                 */
+                scope.lineModel = null;
 
-                var lineItem = umlController.snap.line(firstModel.x, firstModel.y, secondModel.x, secondModel.y)
-                                                 .attr({stroke: 'lightgrey', zIndex: 0});
+                /**
+                 * @method drawLine
+                 * @return {Object}
+                 */
+                scope.drawLine = function drawLine() {
+
+                    var firstModel  = scope.model.connector[0],
+                        secondModel = scope.model.connector[1];
+
+                    return umlController.snap.line(firstModel.x, firstModel.y, secondModel.x, secondModel.y)
+                        .attr({stroke: 'lightgrey', zIndex: 0});
+
+                };
+
+                // Observe the passed in connector model.
+                scope.$watch('model', function modelUpdated() {
+
+                    if (scope.lineModel) {
+
+                        // Remove any existing line models from the DOM.
+                        scope.lineModel.remove();
+
+                    }
+
+                    scope.lineModel = scope.drawLine();
+
+                }, true);
 
             }
 
