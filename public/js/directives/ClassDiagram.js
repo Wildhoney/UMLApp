@@ -32,11 +32,19 @@
 
                 /**
                  * @property classes
-                 * @type {Number[]}
+                 * @type {Array}
                  */
                 $scope.classes = [
                     { name: 'CatController', x: 100, y: 50 },
                     { name: 'PetsController', x: 210, y: 320 }
+                ];
+
+                /**
+                 * @property relationships
+                 * @type {Array}
+                 */
+                $scope.relationships = [
+                    { name: 'Cats to Pets', connector: [ $scope.classes[0], $scope.classes[1] ] }
                 ];
 
             }

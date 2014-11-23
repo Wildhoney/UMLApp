@@ -16,6 +16,7 @@
     <script type="text/javascript" src="js/directives/Uml.js"></script>
     <script type="text/javascript" src="js/directives/ClassDiagram.js"></script>
     <script type="text/javascript" src="js/directives/Class.js"></script>
+    <script type="text/javascript" src="js/directives/Line.js"></script>
 
 </head>
 <body ng-app="umlApp">
@@ -24,6 +25,7 @@
 
         <class-diagram>
 
+            <line ng-model="lineModel" ng-repeat="lineModel in relationships"></line>
             <class ng-model="classModel" ng-repeat="classModel in classes"></class>
 
         </class-diagram>

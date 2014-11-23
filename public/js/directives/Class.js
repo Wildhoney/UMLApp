@@ -5,7 +5,7 @@
      * @submodule class
      * @author Adam Timberlake
      */
-    $angular.module('umlApp').directive('class', function classDirective(Snap) {
+    $angular.module('umlApp').directive('class', function classDirective(Snap, eve) {
 
         return {
 
@@ -18,8 +18,7 @@
 
             /**
              * @property scope
-             * @type {Boolean}
-             * @default true
+             * @type {Object}
              */
             scope: {
                 model: '=ngModel'
@@ -49,10 +48,10 @@
                     classItem.attr({
                         fill: 'white',
                         stroke: 'lightgrey',
-                        strokeOpacity: 1,
-                        strokeWidth: 1,
                         cursor: 'move',
-                        filter: shadowFilter
+                        filter: shadowFilter,
+                        strokeWidth: 1,
+                        strokeOpacity: 1
                     });
 
                 };
@@ -65,8 +64,8 @@
                 $scope.styleText = function styleText(textItem) {
 
                     textItem.attr({
-                        fontFamily: 'Arial, Tahoma, Helvetica',
                         fontSize: '11px',
+                        fontFamily: 'Arial, Tahoma, Helvetica'
                     });
 
                 };
@@ -93,6 +92,11 @@
                 scope.styleClass(classItem, shadowFilter);
                 scope.styleText(textItem);
                 group.drag();
+
+                // Listen to the move event and update the paths!
+                eve.on('snap.drag.move.' + group.id, function (relX, relY, absX, absY) {
+
+                });
 
             }
 
