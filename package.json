@@ -1,6 +1,6 @@
 {
   "name": "umlapp",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "UML schema creation using SnapSVG w/ Angular export and GitHub synchronisation",
   "main": "dist/umlapp.min.js",
   "scripts": {
